@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+10/17明日の予定はgithubと役割分担を決める
