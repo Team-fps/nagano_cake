@@ -23,4 +23,4 @@ Things you may want to cover:
 
 * ...
 
-10/17明日の予定はgithubと役割分担を決める
+よろしくお願いします。
