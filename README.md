@@ -23,6 +23,15 @@ Things you may want to cover:
 
 * ...
 
-12345
-
-123145667
+・インデントは整えること
+  →半角スペース2個分
+・カッコ内スペース空けること
+  bad
+    (text)
+  good
+    ( text )
+・form_withを使うこと
+・横幅(width)・縦幅(hight)はCSSに記述する
+・イメージはapp/assets/imagesに格納すること
+・画像を指定する場合はimage_tagを使用すること
+折りたたむ
