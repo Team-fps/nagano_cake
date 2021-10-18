@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <header class=header>
+    <header>
       <nav class="navbar navbar-expand ">
         <div class="container">
           <a class="navbar-brand" href="/"><span>画像</span></a>
@@ -20,11 +20,28 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              <li><%= link_to "商品一覧", items_path, class:"fas nav-link text-light" %></li>
-              <li><%= link_to "About", homes_about_path, class:"fas nav-link text-light" %></li>
-              <li><%= link_to "新規登録", new_customer_registration_path, class:"fas nav-link text-light" %></li>
-              <li><%= link_to "ログイン", new_customer_session_path, class:"fas nav-link text-light" %></li>
+              <% if admin_signed_in? %>
+                <li><%= link_to "商品一覧", items_path, class:"fas nav-link text-dark" %></li>
+                <li><%= link_to "会員一覧", customers_path, class:"fas nav-link text-dark" %></li>
+                <li><%= link_to "注文履歴", orders_path, class:"fas nav-link text-dark" %></li>
+                <li><%= link_to "ジャンル一覧", admin_genres_path, class:"fas nav-link text-dark" %></li>
+                <li><%= link_to "ログアウト", destroy_admin_session_path, class:"fas nav-link text-dark" %></li>
+              <% elseif customer_signed_in? %>
+                <li><%= link_to "マイページ", items_path, class:"fas nav-link text-dark" %></li>
+                <li><%= link_to "商品一覧", homes_about_path, class:"fas nav-link text-dark" %></li>
+                <li><%= link_to "マイカート", cart_items_path, class:"fas nav-link text-dark" %></li>
+                <li><%= link_to "ログアウト", destroy_customer_session_path, class:"fas nav-link text-dark" %></li>
+              <% else %>
+                <li><%= link_to "商品一覧", items_path, class:"fas nav-link text-dark" %></li>
+                <li><%= link_to "About", homes_about_path, class:"fas nav-link text-dark" %></li>
+                <li><%= link_to "新規登録", new_customer_registration_path, class:"fas nav-link text-dark" %></li>
+                <li><%= link_to "ログイン", new_customer_session_path, class:"fas nav-link text-dark" %></li>
+              <% end %>
             </ul>
+              <%= text_field_tag 'content' %>
+              <%= select_tag 'model', options_for_select({ "User" => "user", "Book" => "book" }) %>
+              <%= select_tag 'method', options_for_select({ "前後一致" => "forward", "後方一致" => "backward", "完全一致" => "perfect", "部分一致" => "partial" }) %>
+              <%= submit_tag '検索' %>
           </div>
         </div>
       </nav>
