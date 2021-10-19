@@ -9,36 +9,44 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header>
       <nav class="navbar navbar-expand ">
         <div class="container">
           <a class="navbar-brand" href="/"><span>画像</span></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
-              <% if admin_signed_in? %>
-                <li><%= link_to "商品一覧", items_path, class:"fas nav-link text-dark" %></li>
-                <li><%= link_to "会員一覧", customers_path, class:"fas nav-link text-dark" %></li>
-                <li><%= link_to "注文履歴", orders_path, class:"fas nav-link text-dark" %></li>
-                <li><%= link_to "ジャンル一覧", admin_genres_path, class:"fas nav-link text-dark" %></li>
-                <li><%= link_to "ログアウト", destroy_admin_session_path,method: :delete, class:"fas nav-link text-dark" %></li>
-              <% elsif customer_signed_in? %>
-                <li><%= link_to "マイページ", items_path, class:"fas nav-link text-dark" %></li>
-                <li><%= link_to "商品一覧", homes_about_path, class:"fas nav-link text-dark" %></li>
-                <li><%= link_to "マイカート", cart_items_path, class:"fas nav-link text-dark" %></li>
-                <li><%= link_to "ログアウト", destroy_customer_session_path, class:"fas nav-link text-dark" %></li>
-              <% else %>
-                <li><%= link_to "商品一覧", items_path, class:"fas nav-link text-dark" %></li>
-                <li><%= link_to "About", homes_about_path, class:"fas nav-link text-dark" %></li>
-                <li><%= link_to "新規登録", new_customer_registration_path, class:"fas nav-link text-dark" %></li>
-                <li><%= link_to "ログイン", new_customer_session_path, class:"fas nav-link text-dark" %></li>
-              <% end %>
-            </ul>
+            <div class="navigation">
+              </div>
+              <ul class="navbar-nav ml-auto">
+                <% if admin_signed_in? %>
+                  <li><%= link_to "商品一覧", items_path, class:"link" %></li>
+                  <li><%= link_to "会員一覧", customers_path, class:"link" %></li>
+                  <li><%= link_to "注文履歴", orders_path, class:"link" %></li>
+                  <li><%= link_to "ジャンル一覧", admin_genres_path, class:"link" %></li>
+                  <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"link" %></li>
+                <% elsif customer_signed_in? %>
+                  <p class="verify">
+                    さん!ようこそNaganoCakeへ!
+                  </p>
+                  <li><%= link_to "マイページ", items_path, class:"link" %></li>
+                  <li><%= link_to "商品一覧", homes_about_path, class:"link" %></li>
+                  <li><%= link_to "マイカート", cart_items_path, class:"link" %></li>
+                  <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"link" %></li>
+                <% else %>
+                  <li><%= link_to "商品一覧", items_path, class:"link" %></li>
+                  <li><%= link_to "About", homes_about_path, class:"link" %></li>
+                  <li><%= link_to "新規登録", new_customer_registration_path, class:"link" %></li>
+                  <li><%= link_to "ログイン", new_customer_session_path, class:"link" %></li>
+                <% end %>
+              </ul>
+            </div>
           </div>
+        </div>
+        <div class="input-group">
+        	<input type="text" class="form-control" placeholder="search">
+        	<span class="input-group-btn">
+        		<button type="button" class="fas fa-search btn btn-default bg-secondary"></button>
+        	</span>
         </div>
       </nav>
     </header>

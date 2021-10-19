@@ -10,3 +10,7 @@ Admin.create!(
     email: 'xiangtaishiqiao0@gmail.com',
     password: 'asdfghjkl'
     )
+Admin.create!(
+    email: 'aiueo@gmail.com',
+    password: 'kakikukeko'
+    )
