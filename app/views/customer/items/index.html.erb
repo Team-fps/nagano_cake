@@ -1,0 +1,65 @@
+<div class='container'>
+  <div class='row mt-4 mb-2'>
+      <h1>All Cakes</h1>
+  </div>
+</div>
+
+<div class='container'>
+
+  <div class='row'>
+    <div class='col-2 px-0 bg-light px-2 py-2'>
+      <p class='genre'>Genres</p>
+      <hr class='hr0'>
+      <p>
+        <%= link_to root_path, class:"btn btn-link text-dark" do %>
+        <span class='genre-text'>Cake</span>
+        <% end %>
+      </p>
+      <p>
+        <%= link_to root_path, class:"btn btn-link text-dark" do %>
+        <span class='genre-text'>Pudding</span>
+        <% end %>
+      </p>
+      <p>
+        <%= link_to root_path, class:"btn btn-link text-dark" do %>
+        <span class='genre-text'>Baked sweets</span>
+        <% end %>
+      </p>
+      <p>
+        <%= link_to root_path, class:"btn btn-link text-dark" do %>
+        <span class='genre-text'>Candy</span>
+        <% end %>
+      </p>
+    </div>
+    <div class='col-md-9 offset-md-1'>
+      <% @items.each do |item| %>
+          <div><%= link_to item_path( item.id ) do %>
+            <%= attachment_image_tag item, :image, fallback: "no-image.jpg", size: "200x200" %>
+            <% end %>
+          </div>
+          <h5><%= link_to item.name, item_path( item.id ) %></h5>
+          <p>¥ <%= item.price %></p>
+      <% end %>
+      <div class='row'>
+        <div class='col'>
+          <%= image_tag "no-image.jpg", size: "200x200" %>
+          <p>ケーキ</p>
+          <p>¥1200</p>
+        </div>
+        <div class='col'>
+          <%= image_tag "no-image.jpg", size: "200x200" %>
+          <p>ケーキ</p>
+          <p>¥1200</p>
+        </div>
+        <div class='col'>
+          <%= image_tag "no-image.jpg", size: "200x200" %>
+          <p>ケーキ</p>
+          <p>¥1200</p>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
