@@ -19,7 +19,7 @@
               </div>
               <ul class="navbar-nav ml-auto">
                 <% if admin_signed_in? %>
-                  <li><%= link_to "商品一覧", items_path, class:"link" %></li>
+                  <li><%= link_to "商品一覧", admin_items_path, class:"link" %></li>
                   <li><%= link_to "会員一覧", customers_path, class:"link" %></li>
                   <li><%= link_to "注文履歴", orders_path, class:"link" %></li>
                   <li><%= link_to "ジャンル一覧", admin_genres_path, class:"link" %></li>
@@ -28,8 +28,8 @@
                   <p class="verify">
                     さん!ようこそNaganoCakeへ!
                   </p>
-                  <li><%= link_to "マイページ", items_path, class:"link" %></li>
-                  <li><%= link_to "商品一覧", homes_about_path, class:"link" %></li>
+                  <li><%= link_to "マイページ", customers_path(current_customer.id), class:"link" %></li>
+                  <li><%= link_to "商品一覧", items_path, class:"link" %></li>
                   <li><%= link_to "マイカート", cart_items_path, class:"link" %></li>
                   <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"link" %></li>
                 <% else %>
