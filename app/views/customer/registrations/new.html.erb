@@ -1,24 +1,54 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
   <%= render "customer/shared/error_messages", resource: resource %>
   
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.last_name_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
-  
-  
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f._field :email, autofocus: true, autocomplete: "" %>
-  </div>
+  <div class="mb-3 row">
+      <%= f.label :"氏名", class:"col-sm-3 col-form-label" %>
+      <div class="col-sm-4">
+        <%= f.label :"(姓)" %>
+        <%= f.text_field :last_name, autofocus: true, class:"form-control" %>
+      </div>
+      <div class="col-sm-4">
+        <%= f.label :"(名)" %>
+        <%= f.text_field :first_name, autofocus: true, class:"form-control" %>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <%= f.label :"フリガナ", class:"col-sm-3 col-form-label" %>
+      <div class="col-sm-4">
+        <%= f.label :"(セイ)" %>
+        <%= f.text_field :last_name_kana, autofocus: true, class:"form-control" %>
+      </div>
+      <div class="col-sm-4">
+        <%= f.label :"(メイ)" %>
+        <%= f.text_field :first_name_kana, autofocus: true, class:"form-control" %>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <%= f.label :"郵便番号（ハイフンなし）", class:"col-sm-3 col-form-label" %>
+      <div class="col-sm-4">
+        <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class:"form-control" %>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <%= f.label :"住所", class:"col-sm-3 col-form-label" %>
+      <div class="col-sm-8">
+        <%= f.text_area :address, autofocus: true, class:"form-control" %>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <%= f.label :"電話番号（ハイフンなし）", class:"col-sm-3 col-form-label" %>
+      <div class="col-sm-4">
+        <%= f.text_field :phone_number, autofocus: true, class:"form-control" %>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <%= f.label :"メールアドレス", class:"col-sm-3 col-form-label" %>
+      <div class="col-sm-4">
+        <%= f.text_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+      </div>
+    </div>
 
   <div class="field">
     <%= f.label :password %>
