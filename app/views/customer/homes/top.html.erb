@@ -1,1 +1,32 @@
-customer
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col-12 col-xl-10'>
+      <div class="col-lg-6", style="background-color: #FFCC99;">
+          <p class="text-white"><strong>
+            </br>ようこそ、ながのCAKEへ！
+            </br>このサイトは、ケーキ販売のECサイトになります。
+            </br>会員でない方も商品の閲覧はできますが、
+            </br>購入には会員登録が必要になります。</br></br>
+          </strong></p>
+      </div>
+      <h2><strong>新着商品</strong></h2>
+      <div class="row">
+        <% @items.each do |item| %>
+          <div class="col-md-3">
+            <div>
+              <%= link_to item_path(item.id) do %>
+              <%= attachment_image_tag item, :image, size: "200x150" %>
+              <% end %>
+              <div><strong>
+                <%= item.name %>
+              </strong></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <p class="text-right">
+        <%= link_to "全ての商品を見る＞", items_path %>
+      </p>
+    </div>
+  </div>
+</div>

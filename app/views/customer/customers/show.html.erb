@@ -1,0 +1,67 @@
+   <!--<div class="image">-->
+     <!--< %= image_tag 'shop-image.jpg', class: 'hoge' %>-->
+     <!--< %= image_tag 'shop-image.jpg', class: 'hoge' %>-->
+   <!--</div>-->
+     <div class="container mt-5">
+      <!--<div class="row">-->
+        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+          
+          <div class="mb-5">
+            <h2  class="font-weight-bold ml-3"><span><i class="fas fa-angle-double-down"></i> マイページ</span></h2>
+          </div>
+            <h3 class="font-weight-bold ml-3">登録情報</h3>
+          <table class="table ml-5">
+            <tr>
+              <th>姓</th>
+              <td><%= @customer.last_name %></td>
+            </tr>
+    
+            <tr>
+              <th>名</th>
+              <td><%= @customer.first_name %></td>
+            </tr>
+    
+            <tr>
+              <th>姓(カナ)</th>
+              <td><%= @customer.last_name_kana %></td>
+            </tr>
+    
+            <tr>
+              <th>名(カナ)</th>
+              <td><%= @customer.first_name_kana %></td>
+            </tr>
+    
+            <tr>
+              <th>郵便番号</th>
+              <td><%= @customer.postal_code %></td>
+            </tr>
+    
+            <tr>
+              <th>住所</th>
+              <td><%= @customer.address %></td>
+            </tr>
+    
+            <tr>
+              <th>電話番号</th>
+              <td><%= @customer.phone_number %></td>
+            </tr>
+    
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= @customer.email %></td>
+            </tr>
+          </table>
+    　　    <div class="mb-3 ml-5">
+            <%= link_to "編集する", edit_customers_path, class:"btn btn-success" %>
+          </div>
+          <div>
+            <h3 class="font-weight-bold ml-3 mb-3">配送先</h3>
+            <%= link_to "一覧を見る", root_path, class:"btn btn-info ml-5" %>
+          </div>
+          <div>
+            <h3 class="font-weight-bold ml-3 mb-3 mt-3">注文履歴</h3>
+            <%= link_to "一覧を見る", root_path, class:"btn btn-info ml-5" %>
+          </div>
+        </div>
+    </div>
+ 
