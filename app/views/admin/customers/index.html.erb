@@ -1,0 +1,28 @@
+<div class="offset-md-1">
+  <h2 class="customers my-4 px-1 text-center">会員一覧</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customers.each do |customers| %>
+      <tr>
+        <td><%= customers.id %></td>
+        <td><%= customers.first_name %> <%= customers.last_name %></td>
+        <td><%= customers.email %></td>
+        <% if customers.is_deleted != false %>
+          <td class="text-success"> <%= customers.is_deleted%></td>
+        <% else %>
+          <td class="text-muted"> <%= customers.is_deleted%></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<%= paginate @customers %>

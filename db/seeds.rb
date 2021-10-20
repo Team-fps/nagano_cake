@@ -14,3 +14,16 @@ Admin.create!(
     email: 'aiueo@gmail.com',
     password: 'kakikukeko'
     )
+
+Customer.create!(
+    email: 'sho@gmail.com',
+    first_name: 'myouji',
+    last_name: 'namae',
+    password: 'shota07'
+    )
+Customer.create!(
+    email: 'shot@gmail.com',
+    first_name: 'myouj',
+    last_name: 'nama',
+    password: 'shota070'
+    )
