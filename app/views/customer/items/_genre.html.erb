@@ -1,0 +1,30 @@
+<% genres.each do |genre| %>
+  <p>
+    <%= link_to root_path, class:"btn btn-link text-dark" do %>
+    <span class='genre-text'><%= genre.name %></span>
+    <% end %>
+  </p>
+<% end %>
+
+<!--ダミーここから-->
+<p>
+  <%= link_to root_path, class:"btn btn-link text-dark" do %>
+  <span class='genre-text'>Cake</span>
+  <% end %>
+</p>
+<p>
+  <%= link_to root_path, class:"btn btn-link text-dark" do %>
+  <span class='genre-text'>Pudding</span>
+  <% end %>
+</p>
+<p>
+  <%= link_to root_path, class:"btn btn-link text-dark" do %>
+  <span class='genre-text'>Baked sweets</span>
+  <% end %>
+</p>
+<p>
+  <%= link_to root_path, class:"btn btn-link text-dark" do %>
+  <span class='genre-text'>Candy</span>
+  <% end %>
+</p>
+<!--ダミーここまで-->
