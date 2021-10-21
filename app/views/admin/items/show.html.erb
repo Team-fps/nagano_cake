@@ -1,24 +1,47 @@
-<div class="item-detal">
+<div class='container'>
   <h1>商品詳細</h1>
-  <div class="item-image">
-    <%= attachment_image_tag @item, :image, size: "200x200", format: 'jpeg', fallback: "no_image.jpg" %>
+  <div class='row'>
+    <div class='col-xs-6'>
+      <%= attachment_image_tag @item, :image, size: "300x300", format: 'jpeg', fallback: "no-image.jpg" %>
+    </div>
+    <div class='col-xs-4 offsetmd-1'>
+      <table class="table table-hover table-inverse">
+        <tbody>
+          <tr>
+            <td>商品名</td>
+            <td><%= @item.name %></td>
+          </tr>
+          <tr>
+            <td>商品説明</td>
+            <td><%= @item.introduction %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= @item.genre.name %></td>
+          </tr>
+          <tr>
+            <td>
+              税抜価格<br>
+              (税込価格)
+            </td>
+            <td>
+              <%= @item.price %>円<br>
+              (<%= @item.add_tax_price.to_s(:delimited) %>円)
+            </td>
+          </tr>
+          <tr>
+            <td>販売ステータス</td>
+            <td>
+              <% if @item.status == true %>
+                <p class="text-success">販売中</p>
+              <% else %>
+                <p class="text-secondary">販売停止中</p>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <td><%= link_to '編集', edit_admin_item_path(@item.id), class:"btn btn-success" %></td>
+    </div>
   </div>
-  <dl>
-    <dl>
-      <dt>商品名</dt>
-      <dd><%= @item.name %></dd>
-      <dt>商品説明</dt>
-      <dd><%= @item.introduction %></dd>
-      <dt>ジャンル</dt>
-      <dd><%= @item.genre.name %></dd>
-      <dt>
-        税抜価格<br>
-        (税込価格)
-      </dt>
-      <dd><%= @item.price %>円<%= @item.add_tax_price.to_s(:delimited) %>円</dd>
-      <dt>販売ステータス</dt>
-      <dd><%= @item.status %></dd>
-      <%= link_to '編集', edit_admin_item_path(@item.id) %>
-    </dl>
-  </dl>
 </div>
