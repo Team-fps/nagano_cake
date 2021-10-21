@@ -16,6 +16,10 @@ class Customer::CustomersController < ApplicationController
     redirect_to customers_path
   end
   
+  def prepare_cart
+   cart || create_cart
+  end
+  
   private
   
   def customer_params
