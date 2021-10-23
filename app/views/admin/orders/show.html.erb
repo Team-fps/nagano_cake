@@ -59,14 +59,22 @@
       </tr>
     </thead>
     <tbody>
-      <% @orders.each do |orders| %>
-      <tr>
-        <td></td>
-        <td></td>
-        <td><% @orders.each do |orders| %></td>
-        <td></td>
-        <td></td>
-        <td><%= f.submit "更新", class: "btn btn-success" %></td>
+      <%# @order.each do |orders| %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <%= form_with model: @order, url: admin_order_detail_path, local:true do |f| %>
+            <td>
+              <%= f.select :production_status, OrderDetail.production_statuses.keys, {着手不可: 0, 制作待ち: 1, 制作中: 2, 制作完了: 3} %>
+            </td>
+            <td>
+              <%= f.submit "更新", class: "btn btn-success" %>
+            </td>
+          <% end %>
+        <tr>
+      <%# end %>
     </tbody>
   </table>
 </div>
