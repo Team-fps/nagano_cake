@@ -26,6 +26,11 @@ class Customer::CustomersController < ApplicationController
     reset_session
     redirect_to root_path
   end
+  
+  def prepare_cart
+   cart || create_cart
+  end
+  
   private
 
   def customer_params

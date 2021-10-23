@@ -7,7 +7,6 @@ class Item < ApplicationRecord
   def add_tax_price
     (self.price * 1.10).round
   end
-
-  validates :status, inclusion: { in: [true, false] }
+  
 
 end

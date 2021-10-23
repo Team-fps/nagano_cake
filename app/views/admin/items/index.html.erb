@@ -1,14 +1,19 @@
  <div class='row'>
    <div class='col-md-8 offset-md-1'>
      <h2>商品一覧</h2>
+     <div class='col-md-4'>
+     <p class="button">
+       <%= link_to '商品登録', new_admin_item_path, class: "btn btn-success" %>
+     </p>
+     </div>
      <table class="table table-hover table-inverse">
        <thead>
          <tr>
-          <th>商品id</th>
-          <th>商品名</th>
-          <th>商品価格</th>
-          <th>商品ジャンル</th>
-          <th>販売ステータス</th>
+           <th>商品id</th>
+           <th>商品名</th>
+           <th>商品価格</th>
+           <th>商品ジャンル</th>
+           <th>販売ステータス</th>
          </tr>
        </thead>
        <tbody>
@@ -18,7 +23,13 @@
              <td><%= link_to item.name, admin_item_path(item.id) %></td>
              <td><%= item.price.to_s(:delimeted) %>円</td>
              <td><%= item.genre.name %></td>
-             <td><%= item.status %></td>
+             <td>
+              <% if item.status == true %>
+                <p class="text-success">販売中</p>
+              <% else %>
+                <p class="text-secondary">販売停止中</p>
+              <% end %>
+             </td>
            </tr>
          <% end %>
        </tbody>
