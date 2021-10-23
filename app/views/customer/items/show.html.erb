@@ -14,15 +14,16 @@
     <div class='col-md-9 offset-md-1'>
       <div class='row'>
         <div class='col'>
-          <%= attachment_image_tag @item, :image, fallback: "no-image.jpg" %>
+          <%= attachment_image_tag @item, :image, :fill, 400, 400, fallback: "no-image.jpg" %>
         </div>
         <div class='col'>
           <p class='cake_name'><%= @item.name %></p>
           <p class='cake_introduction'><%= @item.introduction %></p>
           <p>価格:¥<%= @item.add_tax_price.to_s(:delimited) %>(税込)</p>
-          <%= form_with model: @cart_items do |f| %>
+          <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
             <%= f.hidden_field :item_id, value: @item.id %>
-            <%= f.select :count, options_for_select((1..10).to_a), {include_blank: "個数"} %>
+            <%= f.hidden_field :customer_id, value: current_customer.id %>
+            <%= f.select :count, options_for_select((1..10).to_a) %>
             <%= f.submit "カートに入れる" %>
           <% end %>
         </div>
