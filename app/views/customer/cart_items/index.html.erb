@@ -39,7 +39,7 @@
       </table>
       <%= link_to destroy_all_cart_items_path, method: :delete, data: { confirm: "カートを空にしますか？" } do %>
         <div class="text-right">
-          <button class="btn btn-info mb-4">カートを空にする</button>
+          <button class="btn btn-secondary mb-4">カートを空にする</button>
         </div>
       <% end %>
       <table class="total_price">
@@ -48,6 +48,9 @@
           <th>¥<%= @sum.to_s(:delimited) %></th>
         </tr>
       </table>
+    <% end %>
+    <%= link_to new_order_path do %>
+        <button class="btn btn-success mb-4">情報入力に進む</button>
     <% end %>
   </div>
 </div>
