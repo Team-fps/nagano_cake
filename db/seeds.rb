@@ -27,3 +27,7 @@ Customer.create!(
     last_name: 'nama',
     password: 'shota070'
     )
+
+Order.create!(
+    customer_id: '1'
+    )

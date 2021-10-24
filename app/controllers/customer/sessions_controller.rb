@@ -28,8 +28,8 @@ class Customer::SessionsController < Devise::SessionsController
   def reject_inactive_user
     @customer = Customer.find_by(email: params[:customer][:email])
     if @customer
-      if @customer.valid_password?(params[:customer][:password]) && !@customer.is_valid
-        redirect_to new_user_session_path
+      if @customer.valid_password?(params[:customer][:password]) && !@customer.is_deleted
+        redirect_to new_customers_session_path
       end
     end
   end
