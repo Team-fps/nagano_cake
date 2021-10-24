@@ -65,14 +65,14 @@
           <td></td>
           <td></td>
           <td></td>
-          <%= form_with model: @order, url: admin_order_detail_path, local:true do |f| %>
+          <%#= form_with model: @ordered_products, url: admin_order_path(@order.id),method: :patch, local:true do |f| %>
             <td>
-              <%= f.select :production_status, OrderDetail.production_statuses.keys, {着手不可: 0, 制作待ち: 1, 制作中: 2, 制作完了: 3} %>
+              <%#= f.select :production_status, OrderDetail.production_statuses.keys, {着手不可: 0, 制作待ち: 1, 制作中: 2, 制作完了: 3} %>
             </td>
             <td>
-              <%= f.submit "更新", class: "btn btn-success" %>
+              <%#= f.submit "更新", class: "btn btn-success" %>
             </td>
-          <% end %>
+          <%# end %>
         <tr>
       <%# end %>
     </tbody>
