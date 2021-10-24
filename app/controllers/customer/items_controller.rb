@@ -9,7 +9,7 @@ class Customer::ItemsController < ApplicationController
   def show
     @item = Item.find( params[:id] )
     @genres = Genre.all
-    @cart_items = CartItem.new
+    @cart_item = CartItem.new
     @customer = current_customer
   end
 
