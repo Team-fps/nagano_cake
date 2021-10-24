@@ -18,7 +18,7 @@
         </div>
         <div class='col'>
           <p class='cake_name'><%= @item.name %></p>
-          <p class='cake_introduction'><%= @item.introduction %></p>
+          <p class='cake_introduction'><%= simple_format( @item.introduction ) %></p>
           <p>価格:¥<%= @item.add_tax_price.to_s(:delimited) %>(税込)</p>
           <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
             <%= f.hidden_field :item_id, value: @item.id %>

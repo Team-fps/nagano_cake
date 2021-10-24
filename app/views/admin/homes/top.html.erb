@@ -10,19 +10,23 @@
       </tr>
     </thead>
     <tbody>
-      <% @customers.each do |customers| %>
+      <% @orders.each do |orders| %>
       <tr>
-        <td>cart_itemの作成日時(購入日時)</td>
         <td>
-          <%= link_to admin_customer_path(customers.id) do %>
-            <%= customers.first_name %> <%= customers.last_name %>
+          <%= link_to admin_order_path(orders.id) do %>
+            <%= orders.created_at %>
           <% end %>
         </td>
-        <td><%= customers.cart_items.count %></td>
+        <td>
+          <%= link_to admin_customer_path(orders.customer.id) do %>
+            <%= orders.customer.first_name %> <%= orders.customer.last_name %>
+          <% end %>
+        </td>
+        <td><%= orders.customer.cart_items.count %></td>
         <td>注文ステータス(order_status)</td>
       </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-<%= paginate @customers %>
+<%= paginate @orders %>
