@@ -43,7 +43,10 @@
           </tr>
           <tr>
             <td class="border-0 text-left"></td>
-            <td class="border-0 text-left d-flex"><p class="mr-4"><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %></p><p><%= link_to "注文履歴一覧を見る", admin_order_path(@customer.id), class: "btn btn-primary" %></p></td>
+            <td class="border-0 text-left d-flex">
+              <p class="mr-4"><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %></p>
+              <p><%= link_to "注文履歴一覧を見る", admin_order_path(@customer.orders.ids), class: "btn btn-primary" %></p>
+            </td>
           </tr>
        </tbody>
     </table>
