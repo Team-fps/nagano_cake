@@ -26,9 +26,7 @@
                   <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"link" %></li>
                 <% elsif customer_signed_in? %>
                   <p class="verify">
-
                     ようこそ、<%= current_customer.last_name %>さん!
-
                   </p>
                   <li><%= link_to "マイページ", customers_path, class:"link" %></li>
                   <li><%= link_to "商品一覧", items_path, class:"link" %></li>
@@ -58,7 +56,8 @@
   	    <div class='row'>
     	    <div class='mx-auto'>
     		    <p class=footer>
-    		      NaganoCake.com
+    		      NaganoCake.com<br>
+    		      Presented by Team.fPs
     		    </p>
     	    </div>
         </div>
