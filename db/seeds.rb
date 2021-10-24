@@ -31,3 +31,7 @@
 Order.create!(
     customer_id: '2'
     )
+
+Order.create!(
+    customer_id: '1'
+    )
