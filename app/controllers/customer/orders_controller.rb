@@ -1,38 +1,34 @@
 class Customer::OrdersController < ApplicationController
 
   def new
-    @oder = Order.new
+    @order = Order.new
     @cart_item = CartItem.where(customer_id: current_customer.id)
     @customer = current_customer
   end
 
   def confirm
     @order = Order.new(order_params)
+    @order.shipping_cost = 800
     if params[:order][:address_option] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
+      @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:address_option] == "1"
-      if Address.exists?(name: params[:order][:registered])
-        @order.postal_code = Address.find(params[:order][:registered]).postal_code
-        @order.address = Address.find(params[:order][:registered]).address
-      else
-        render :new
-      end
+      @order.postal_code = Address.find(params[:order][:address_id]).postal_code
+      @order.address = Address.find(params[:order][:address_id]).address
+      @order.name = Address.find(params[:order][:address_id]).name
     elsif params[:order][:address_option] == "2"
       address_new = current_customer.addresses.new(address_params)
       if address_new.save
-      else
-      render :new
       end
     else
       redirect_to new_order_path
     end
     @cart_items = current_customer.cart_items.all
-    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
   end
 
   def create
-    cart_items = current_customer.cart_items.all
+    @cart_items = current_customer.cart_items.all
     @order = current_customer.orders.new(order_params)
     if @order.save
       @cart_items.each do |cart|
@@ -44,7 +40,7 @@ class Customer::OrdersController < ApplicationController
         order_detail.save
       end
       redirect_to complete_orders_path
-      cart_items.destroy_all
+      @cart_items.destroy_all
     else
       @order = Order.new(order_params)
       render :new
@@ -71,7 +67,7 @@ class Customer::OrdersController < ApplicationController
   end
 
   def address_params
-    params.require(:order).permit(:address, :name )
+    params.require(:order).permit(:postal_code, :address, :name )
   end
 
 end
