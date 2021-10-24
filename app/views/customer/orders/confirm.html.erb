@@ -1,0 +1,21 @@
+<% @sum = 0 %>
+<% @cart_items.each do |cart| %>
+  <%= cart.item.name %>
+  ¥<%= cart.item.add_tax_price.to_s(:delimited) %>
+  <%= cart.count %>
+  ¥<%= (cart.item.add_tax_price * cart.count).to_s(:delimited) %>
+  <% @sum += (cart.item.add_tax_price * cart.count) %>
+<% end %>
+
+<p>ご請求金額</p>
+  ¥<%= @sum.to_s(:delimited) %>
+
+<p>お届け先</p>
+<%= @order.address %>
+
+<%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :total_payment, value: @sum %>
+  <%= f.submit "注文を確定する" %>
+<% end %>
