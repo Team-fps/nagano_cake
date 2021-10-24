@@ -2,22 +2,26 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @ordered_products = @order.order_details
+    @ordered_details = @order.order_details
   end
 
-  # def update
-  #   order = Order.find(params[:id])
-  #   ActiveRecord::Base.transaction do
-  #     order.update_attributes!(order_params)
-  #     OrderDetail.multi_update(order_detail_params)
-  #   end
-  #   redirect_back(fallback_location: root_path)
-  # end
+  def update
+    @order = Order.find(params[:id])
+    @ordered_detail = @order.order_details
+
+    if @order.update(order_params)
+      @ordered.order_details.update_all(status: 1) if @order.order_status == 1
+      redirect_to request.referer
+    else
+      redirect_to request.referer
+    end
+
+  end
 
   private
 
   def order_params
-    params.require(:order).permit(:order_status).merge(order_details: production_status)
+    params.require(:order).permit(:order_status)
   end
 
   def order_detail_params
