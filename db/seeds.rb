@@ -41,10 +41,10 @@
 #     order_id: '1'
 #     )
 
-Item.create!(
-    genre_id: '1',
-    name: 'ケーキ1',
-    image_id: '1',
-    introduction: 'ケーキです',
-    price: '122'
-    )
+# Item.create!(
+#     genre_id: '1',
+#     name: 'ケーキ1',
+#     image_id: '1',
+#     introduction: 'ケーキです',
+#     price: '122'
+#     )
