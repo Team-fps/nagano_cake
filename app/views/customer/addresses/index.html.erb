@@ -1,7 +1,7 @@
 <div class="container mt-5">
  <div class="row">
   <div class="col">
-   <h2><span class="badge badge-secondary mb-5">配送先登録/一覧</span></h2>
+   <h2><span>配送先登録</span></h2>
   </div>
  </div>
 
@@ -29,7 +29,7 @@
   </div>
  <% end %>
  <div>
-   <h2><span class="badge badge-secondary mb-3">配送先一覧</span></h2>
+   <h2><span>配送先一覧</span></h2>
  </div>
 
  <table border="1" class="col-9 mx-5 mt-5">
@@ -46,16 +46,10 @@
    <td><%= address.name %></td>
    <td>
      <%= link_to "編集する", edit_address_path(address.id), class:"btn btn-sm btn-success" %>
+     <%= link_to "削除する", address_path(address.id), method: :delete, class:"btn btn-sm btn-danger" %>
    </td>
   </tr>
   <% end %>
-     <!--<div class="row">-->
-     <!-- <div class="col text-center">-->
-       <!--< %= link_to "編集する", edit_address_path(@address.id), class:"btn btn-sm btn-success" %>-->
-      <!--</div>-->
-      <!--<div class="col">-->
-       <!--< %= link_to "削除する", address_path(@address.id), method: :delete, class:"btn btn-sm btn-danger" %>-->
-      <!--</div>-->
-    </div>
+  </div>
  </table>
 </div>
