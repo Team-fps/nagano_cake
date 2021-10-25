@@ -22,15 +22,15 @@ class Customer::CustomersController < ApplicationController
 
   def withdraw
     @customer = Customer.find(current_customer.id)
-    @customer.update(is_deleted: true)
+    @customer.update(is_valid: false)
     reset_session
     redirect_to root_path
   end
-  
+
   def prepare_cart
    cart || create_cart
   end
-  
+
   private
 
   def customer_params
