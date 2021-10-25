@@ -3,6 +3,7 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @ordered_details = @order.order_details
+    
     @order.shipping_cost = 800
   end
 
