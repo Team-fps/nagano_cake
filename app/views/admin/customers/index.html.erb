@@ -19,10 +19,10 @@
           <% end %>
         </td>
         <td><%= customers.email %></td>
-        <% if customers.is_deleted != false %>
-          <td class="text-success"> <%= customers.is_deleted%></td>
+        <% if customers.is_valid != true %>
+          <td class="text-muted">退会</td>
         <% else %>
-          <td class="text-muted"> <%= customers.is_deleted%></td>
+          <td class="text-success">有効</td>
         <% end %>
       </tr>
       <% end %>

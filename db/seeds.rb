@@ -48,3 +48,8 @@
 #     introduction: 'ケーキです',
 #     price: '122'
 #     )
+
+Admin.create!(
+     email: 'test@gmail.com',
+     password: '123456'
+     )

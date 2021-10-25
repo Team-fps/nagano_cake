@@ -11,7 +11,7 @@
           </div>
         <!--</div>-->
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="row mx-auto my-3">
+        <div class="row my-3">
           <div class="col-4">
             <%= f.label :メールアドレス %>
           </div>
@@ -19,7 +19,7 @@
             <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "30x20", placeholder: "sample@example.com" %>
           </div>
         </div>
-        <div class="row mx-auto my-3">
+        <div class="row my-3">
           <div class="col-4">
             <%= f.label :パスワード %>
           </div>
@@ -27,7 +27,7 @@
             <%= f.password_field :password, autocomplete: "current-password", size: "25x20" %>
           </div>
         </div>
-          <div class="row mx-auto my-4">
+          <div class="row my-4">
             <div class="col-11 mx-auto">
               <%= f.submit "ログイン", class: 'btn btn-primary w-25' %>
             </div>

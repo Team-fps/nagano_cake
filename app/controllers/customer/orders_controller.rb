@@ -8,7 +8,7 @@ class Customer::OrdersController < ApplicationController
 
   def confirm
     @order = Order.new(order_params)
-    @order.shipping_cost = 800
+    @order.shipping_cost = "800"
     if params[:order][:address_option] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
