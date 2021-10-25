@@ -1,6 +1,7 @@
-<h2>注文情報確認</h2>
 <div class='row'>
-  <div class='col-md-8 offset-md-1'>
+  <div class='col-md-8 offset-md-2'>
+    <hr>
+    <p class='main'>注文情報確認</p>
     <table  class="table table-hover table-inverse">
       <thead>
         <th>商品名</th>
@@ -28,8 +29,7 @@
       <h3>¥<%= @sum.to_s(:delimited) %></h3>
       <hr>
       <h6>お届け先</h6>
-      <h5>〒<%= @order.postal_code %></h5>
-      <h5><%= @order.address %></h5>
+      <h5>〒<%= @order.postal_code %>　<%= @order.address %></h5>
       <h5><%= @order.name %></h5>
       <hr>
       <div>
