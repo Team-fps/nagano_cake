@@ -17,7 +17,7 @@
           <td>¥<%= cart.item.add_tax_price.to_s(:delimited) %></td>
           <td><%= cart.count %></td>
           <td>¥<%= (cart.item.add_tax_price * cart.count).to_s(:delimited) %></td>
-          <% @sum += (cart.item.add_tax_price * cart.count) %>
+          @sum
         </tr>
       </tbody>
       <% end %>

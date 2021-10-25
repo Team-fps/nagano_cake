@@ -36,7 +36,15 @@
 #     customer_id: '1'
 #     )
 
-OrderDetail.create!(
-    item_id: '1',
-    order_id: '1'
+# OrderDetail.create!(
+#     item_id: '1',
+#     order_id: '1'
+#     )
+
+Item.create!(
+    genre_id: '1',
+    name: 'ケーキ1',
+    image_id: '1',
+    introduction: 'ケーキです',
+    price: '122'
     )

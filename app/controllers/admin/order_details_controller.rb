@@ -10,8 +10,9 @@ class Admin::OrderDetailsController < ApplicationController
     else
       redirect_to request.referer
     end
-
   end
+
+
 
    private
 

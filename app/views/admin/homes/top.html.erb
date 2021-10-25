@@ -22,7 +22,11 @@
             <%= orders.customer.first_name %> <%= orders.customer.last_name %>
           <% end %>
         </td>
-        <td><%= orders.customer.cart_items.count %></td>
+        <% @sum = 0 %>
+        <% @order.each do |order| %>
+          <% (@sum += order.count ) %>
+        <% end %>
+        <td><%= @sum  %></td>
         <td><%= orders.order_status %></td>
       </tr>
       <% end %>
