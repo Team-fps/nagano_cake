@@ -3,13 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 form {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 800px;
 }
 
-form dl dt {
-  width: 165px;
-  float: left;
-  clear: both;
+.new-item {
+  text-align: center;
 }
