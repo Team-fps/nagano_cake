@@ -25,6 +25,9 @@
     </table>
     <hr>
     <div class="text-right">
+      <t6>送料</t6>
+      <h3>¥<%= @order.shipping_cost.to_s(:delimited) %></h3>
+      <hr>
       <h6>ご請求金額</h6>
       <h3>¥<%= @sum.to_s(:delimited) %></h3>
       <hr>
