@@ -35,13 +35,13 @@
       <h5>〒<%= @order.postal_code %>　<%= @order.address %></h5>
       <h5><%= @order.name %></h5>
       <hr>
-      <div>
+      <div class="text-center">
         <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
           <%= f.hidden_field :name %>
           <%= f.hidden_field :address %>
           <%= f.hidden_field :postal_code %>
           <%= f.hidden_field :total_payment, value: @sum %>
-          <%= f.submit "注文を確定する" %>
+          <%= f.submit "注文を確定する", class:"btn btn-primary" %>
         <% end %>
       </div>
     </div>
