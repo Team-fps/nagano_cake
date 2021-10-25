@@ -2,9 +2,9 @@ class Customer::AddressesController < ApplicationController
 
   def index
     @address = Address.new
-    @addresses = Address.all
+    @addresses = current_customer.addresses.all
     @customer = Customer.find(current_customer.id)
-    @customer = current_customer.address
+    @customers = current_customer.address
   end
 
   def create
