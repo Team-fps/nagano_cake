@@ -1,8 +1,9 @@
-<h2>カート内アイテム</h2>
 <div class='row'>
-   <div class='col-md-8 offset-md-1'>
+   <div class='col-md-8 offset-md-2'>
+    <hr>
+    <p class='main'>カート内アイテム</p>
     <% if !@cart_items.present? %>
-      <h2>カート内アイテムがありません</h2>
+      <p class='main'>カート内アイテムがありません</p>
     <% else %>
       <table  class="table table-hover table-inverse">
         <thead>
@@ -30,18 +31,19 @@
                   <%= f.submit "変更" %>
                 <% end %>
               </td>
-              <td>¥<%= (cart_item.item.add_tax_price * cart_item.count).to_s(:delimited)  %></td>
+              <td>¥<%= (cart_item.item.add_tax_price * cart_item.count).to_s(:delimited) %></td>
               <% @sum += (cart_item.item.add_tax_price * cart_item.count) %>
               <td><%= button_to "削除", cart_item_path(cart_item), method: :delete, data: { confirm: "商品を削除しますか？" } %></td>
             </tr>
           </tbody>
         <% end %>
       </table>
-      <%= link_to destroy_all_cart_items_path, method: :delete, data: { confirm: "カートを空にしますか？" } do %>
-        <div class="text-right">
+      <hr>
+      <div class="text-right">
+        <%= link_to destroy_all_cart_items_path, method: :delete, data: { confirm: "カートを空にしますか？" } do %>
           <button class="btn btn-secondary mb-4">カートを空にする</button>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
       <table class="total_price">
         <tr>
           <th>合計金額：</th>

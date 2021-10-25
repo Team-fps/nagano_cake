@@ -18,7 +18,7 @@
       </tr>
       <tr>
         <td class="border-0 text-left">配送先</td>
-        <td class="border-0 text-left"><%= @order.postal_code %><%= @order.address %> <%= @order.name %></td>
+        <td class="border-0 text-left">〒<%= @order.postal_code %><%= @order.address %> <%= @order.name %></td>
       </tr>
       <tr>
         <td class="border-0 text-left">支払方法</td>
@@ -56,27 +56,30 @@
         <th>数量</th>
         <th>小計</th>
         <th>制作ステータス</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
-      <%# @order.each do |orders| %>
+      <% @ordered_details.each do |ordered_detail| %>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <%#= form_with model: @ordered_products, url: admin_order_path(@order.id),method: :patch, local:true do |f| %>
+          <td><%= ordered_detail.item.name %></td>
+          <td><%= ordered_detail.item.add_tax_price.to_s(:delimeted) %>円</td>
+          <td><%= ordered_detail.count %></td>
+          <td><%= ordered_detail.item.name %></td>
+          <%= form_with model: ordered_detail, url: admin_order_detail_path(ordered_detail.id),method: :patch, local:true do |f| %>
             <td>
-              <%#= f.select :production_status, OrderDetail.production_statuses.keys, {着手不可: 0, 制作待ち: 1, 制作中: 2, 制作完了: 3} %>
+              <%= f.select :production_status, OrderDetail.production_statuses.keys, {着手不可: 0, 制作待ち: 1, 制作中: 2, 制作完了: 3} %>
             </td>
             <td>
-              <%#= f.submit "更新", class: "btn btn-success" %>
+              <%= f.submit "更新", class: "btn btn-success" %>
             </td>
-          <%# end %>
+          <% end %>
         <tr>
-      <%# end %>
+      <% end %>
     </tbody>
   </table>
 </div>
+<%= @total_price.add_tax_price.to_s(:delimeted) %>円
 
 <h1>ページング機能</h1>
+

@@ -35,11 +35,13 @@
           </tr>
           <tr>
             <td class="border-0 text-left">会員ステータス</td>
-            <% if @customer.is_deleted != false %>
-              <td class="text-success border-0 text-left"> <%= @customer.is_deleted%></td>
-            <% else %>
-              <td class="text-muted border-0 text-left"> <%= @customer.is_deleted%></td>
-            <% end %>
+            <td class="border-0 text-left">
+              <% if @customer.is_deleted == "有効" %>
+                <p class="text-success">有効</p>
+              <% else %>
+                <p class="text-muted">退会</p>
+              <% end %>
+            </td>
           </tr>
           <tr>
             <td class="border-0 text-left"></td>

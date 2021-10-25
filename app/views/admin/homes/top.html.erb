@@ -1,5 +1,5 @@
 <div class="offset-md-1">
-  <h2 class="customers my-4 px-1 text-center">会員一覧</h2>
+  <h2 class="customers my-4 px-1 text-center">注文履歴一覧</h2>
   <table class="table">
     <thead>
       <tr>
@@ -22,8 +22,12 @@
             <%= orders.customer.first_name %> <%= orders.customer.last_name %>
           <% end %>
         </td>
-        <td><%= orders.customer.cart_items.count %></td>
-        <td>注文ステータス(order_status)</td>
+        <% @sum = 0 %>
+        <% @order.each do |order| %>
+          <% (@sum += order.count ) %>
+        <% end %>
+        <td><%= @sum  %></td>
+        <td><%= orders.order_status %></td>
       </tr>
       <% end %>
     </tbody>
