@@ -3,7 +3,6 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @ordered_details = @order.order_details
-    Order.page(params[:page]).reverse_order
   end
 
   def update
