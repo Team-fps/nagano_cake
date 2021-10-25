@@ -56,8 +56,9 @@ class Customer::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_details = @order.order_details
-    # @order.carriage = 800
+    @ordered_details = @order.order_details
+    @order.shipping_cost = 800
+    
   end
 
   private
