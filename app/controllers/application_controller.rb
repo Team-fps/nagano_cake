@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   helper_method :current_cart
-  
+
   def current_cart
     if current_customer
       current_cart = current_customer.cart || current_customer.create_cart!
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_homes_top_path
     when Customer
-      items_path
+      customers_path
     end
   end
 

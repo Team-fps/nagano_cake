@@ -8,7 +8,7 @@
         <td class="border-0 text-left">購入者</td>
         <td class="border-0 text-left">
           <%= link_to admin_customer_path(@order.customer.id) do %>
-            <%= @order.customer.first_name %> <%= @order.customer.last_name %>
+            <%= @order.customer.last_name %> <%= @order.customer.first_name %>
           <% end %>
         </td>
       </tr>
@@ -47,7 +47,6 @@
       </tr>
     </tbody>
   </table>
-
   <div class="container">
     <div class="row">
       <div class="col-8">
