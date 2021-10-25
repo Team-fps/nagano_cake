@@ -8,7 +8,7 @@
         <td class="border-0 text-left">購入者</td>
         <td class="border-0 text-left">
           <%= link_to admin_customer_path(@order.customer.id) do %>
-            <%= @order.customer.first_name %> <%= @order.customer.last_name %>
+            <%= @order.customer.last_name %> <%= @order.customer.first_name %>
           <% end %>
         </td>
       </tr>
@@ -79,7 +79,3 @@
     </tbody>
   </table>
 </div>
-<%= @total_price.add_tax_price.to_s(:delimeted) %>円
-
-<h1>ページング機能</h1>
-
