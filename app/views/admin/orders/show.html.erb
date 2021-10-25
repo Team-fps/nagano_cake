@@ -60,12 +60,14 @@
       </tr>
     </thead>
     <tbody>
+      <% @sum = 0 %>
       <% @ordered_details.each do |ordered_detail| %>
         <tr>
           <td><%= ordered_detail.item.name %></td>
           <td><%= ordered_detail.item.add_tax_price.to_s(:delimeted) %>円</td>
           <td><%= ordered_detail.count %></td>
-          <td><%= ordered_detail.item.name %></td>
+          <td>¥<%= (ordered_detail.item.add_tax_price * ordered_detail.count).to_s(:delimited) %></td>
+          <% @sum += (ordered_detail.item.add_tax_price * ordered_detail.count) %>
           <%= form_with model: ordered_detail, url: admin_order_detail_path(ordered_detail.id),method: :patch, local:true do |f| %>
             <td>
               <%= f.select :production_status, OrderDetail.production_statuses.keys, {着手不可: 0, 制作待ち: 1, 制作中: 2, 制作完了: 3} %>
@@ -79,7 +81,7 @@
     </tbody>
   </table>
 </div>
-<%= @total_price.add_tax_price.to_s(:delimeted) %>円
-
-<h1>ページング機能</h1>
+<%= @sum.to_s(:delimited) %>円
+<% @sumsum = 0 %>
+<%= @sumsum += ( @order.shipping_cost.to_i + @sum) %>円
 

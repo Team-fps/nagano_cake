@@ -3,10 +3,7 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @ordered_details = @order.order_details
-    @total_price = 0
-    @ordered_details.each do |ordered_detail|
-      @total_price = ordered_detail.item
-    end
+    Order.page(params[:page]).reverse_order
   end
 
   def update
