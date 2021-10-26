@@ -1,0 +1,67 @@
+<div class='row'>
+   <div class='col-md-8 offset-md-2'>
+    <hr>
+    <p class='main'>カート内アイテム</p>
+    <% if !@cart_items.present? %>
+      <hr>
+      <p class='main'>カート内アイテムがありません</p>
+      <hr>
+    <% else %>
+      <table  class="table table-hover table-inverse">
+        <thead>
+          <th></th>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </thead>
+        <% @sum = 0 %>
+        <% @cart_items.each do |cart_item| %>
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to item_path( cart_item.item.id ) do %>
+                  <%= attachment_image_tag cart_item.item, :image, :fill, 100, 100, fallback: "no-image.jpg" %>
+                <% end %>
+              </td>
+              <td><%= cart_item.item.name %></td>
+              <td>¥<%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+              <td>
+                <%= form_with model: cart_item do |f| %>
+                  <%= f.number_field :count, min: 1, max: 99 %>
+                  <%= f.submit "変更" %>
+                <% end %>
+              </td>
+              <td>¥<%= (cart_item.item.add_tax_price * cart_item.count).to_s(:delimited) %></td>
+              <% @sum += (cart_item.item.add_tax_price * cart_item.count) %>
+              <td><%= button_to "削除", cart_item_path(cart_item), method: :delete, data: { confirm: "商品を削除しますか？" } %></td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+      <hr>
+      <div class="text-right">
+        <%= link_to destroy_all_cart_items_path, method: :delete, data: { confirm: "カートを空にしますか？" } do %>
+          <button class="btn btn-secondary mb-4">カートを空にする</button>
+        <% end %>
+      </div>
+      <table class="total_price">
+        <tr>
+          <th>合計金額：</th>
+          <th>¥<%= @sum.to_s(:delimited) %></th>
+        </tr>
+      </table>
+    <% end %>
+    <div class="text-center">
+      <%= link_to new_order_path do %>
+          <button class="btn btn-success mb-4">情報入力に進む</button>
+      <% end %>
+    </div>
+    <div class="text-center">
+      <%= link_to root_path do %>
+          <button class="btn btn-light mb-4">買い物を続ける</button>
+      <% end %>
+    </div>
+  </div>
+</div>

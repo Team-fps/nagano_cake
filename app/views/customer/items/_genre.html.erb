@@ -1,0 +1,7 @@
+<% genres.each do |genre| %>
+  <p>
+    <%= link_to items_path, class:"btn btn-link text-dark" do %>
+    <span class='genre-text'><%= genre.name %></span>
+    <% end %>
+  </p>
+<% end %>

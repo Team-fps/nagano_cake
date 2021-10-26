@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <%= form_with model:@item, url:'/admin/items', local:true do |f| %>
+    <div class="text-center">
+      <h1>商品新規登録</h1>
+    </div>
+      <div class="row">
+        <div class="col text-center">
+          <%= f.submit '新規登録' %>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col pl-5 ml-5 text-right">
+          商品画像
+        </div>
+        <div class="col">
+          <%= f.attachment_field :image, placegolder:"Image" %>
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="row mt-2">
+        <div class="col text-right">
+          商品名
+        </div>
+        <div class="col">
+          <%= f.text_field :name %>
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="row mt-2">
+        <div class="col text-right">
+          商品説明
+        </div>
+        <div class="col">
+          <%= f.text_area :introduction, size: "25x3" %>
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="row mt-2">
+        <div class="col text-right">
+          ジャンル
+        </div>
+        <div class="col">
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, { prompt: '選択してください' } %>
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="row mt-2">
+        <div class="col text-right">
+          税抜価格
+        </div>
+        <div class="col">
+          <%= f.text_field :price %>円
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="row mt-2">
+        <div class="col text-right">
+          販売ステータス
+        </div>
+        <div class="col">
+          <%= f.radio_button :status,  true %>
+          <%= f.label :status, '販売中', value: true %>
+          <%= f.radio_button :status, false %>
+          <%= f.label :status, '販売停止中', value: false %>
+        </div>
+        <div class="col"></div>
+      </div>
+    <% end %>
+  </div>
+</div>

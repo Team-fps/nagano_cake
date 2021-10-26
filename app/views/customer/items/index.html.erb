@@ -1,0 +1,34 @@
+<div class='container'>
+  <div class='row mt-4 mb-2'>
+      <h1>All Cakes</h1>
+  </div>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-2 px-0 bg-light px-2 py-2'>
+      <p class='genre'>Genres</p>
+      <hr class='hr0'>
+      <%= render partial: 'genre', locals: { genres: @genres } %>
+    </div>
+    <div class='col-md-9 offset-md-1'>
+      <div class='row'>
+        <% @items.each do |item| %>
+          <% if item.status == true %>
+            <div class='col-4'>
+              <ul>
+                <li>
+                  <%= link_to item_path( item.id ) do %>
+                  <%= attachment_image_tag item, :image, :fill, 200, 200, fallback: "no-image.jpg" %>
+                  <% end %>
+                </li>
+                <li><%= link_to item.name, item_path( item.id ) %></li>
+                <li>価格:¥<%= item.add_tax_price.to_s(:delimited) %>(税込)</li>
+              </ul>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
