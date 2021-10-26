@@ -1,39 +1,42 @@
-  <div class="container-fluid">
-    <div class="admin-login-content mx-auto">
-      <div class="row justify-content-center">
-        <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
-          <div class="row">
-            <h2 class="admin-login my-4 px-1 text-center">管理者ログイン</h2>
-          </div>
+<body>
+  <div class="container text-center">
+      <hr>
+      <h2>ログイン</h2>
+      <hr>
+      <div class="col-13">
+        <h3>会員の方はこちらからログイン</h3>
+      </div>
 
-          <div class="field-box">
-            <div class="field">
-              <div class="row">
-                <p class=""><%= f.label :メールアドレス %></p>
-              </div>
-              <div class="row">
-                <p class="text-right"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
-              </div>
-            </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="row my-3">
+      <div class="col ">
+        <%= f.label :メールアドレス %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", size: "30x20", placeholder: "sample@example.com" %>
+      </div>
+    </div>
+    <div class="row my-3">
+      <div class="col">
+        <%= f.label :パスワード %>
+        <%= f.password_field :password, autocomplete: "current-password", size: "25x20" %>
+      </div>
+    </div>
+      <div class="row mx-auto">
+        <div class="col-11 mx-auto">
+          <%= f.submit "ログイン", class: 'btn btn-primary w-25' %>
+        </div>
+      </div>
+    <% end %>
 
-            <div class="field">
-                <div class="row">
-                  <p class="text-left"><%= f.label :パスワード %></p>
-                </div>
-                <div class="row">
-                  <p class="text-right"><%= f.password_field :password, autocomplete: "current-password" %></p>
-                </div>
-            </div>
+      <div class="col-13">
+        <h3>会員登録がお済みでない方</h3>
+      </div>
 
-            <div class="actions">
-              <div class="row justify-content-center">
-                <%= f.submit "ログイン" %>
-              </div>
-            </div>
-          </div>
-        <% end %>
+      <div class="col-9 mx-auto">
+        <%= link_to 'こちら', new_customer_session_path %>
+        から新規登録を行なって下さい。
       </div>
     </div>
   </div>
+</body>
 
 <%= render "admin/shared/links" %>
